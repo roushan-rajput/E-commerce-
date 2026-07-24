@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Create Account | VYBE</title>
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+```
+
+</head>
+
+<body>
+
+```
+<main class="register-page">
+
+
+    <!-- ================= LEFT SIDE ================= -->
+
+    <section class="register-showcase">
+
+
+        <a href="#" class="register-logo">
+            VYBE<span>.</span>
+        </a>
+
+
+        <div class="register-showcase-content">
+
+
+            <span class="register-showcase-label">
+                JOIN THE EXPERIENCE
+            </span>
+
+
+            <h1>
+
+                Create your
+                <br>
+
+                <em>own story.</em>
+
+            </h1>
+
+
+            <p>
+
+                Create your VYBE account and unlock a more
+                personal way to discover, shop and experience
+                products you'll love.
+
+            </p>
+
+
+            <div class="register-benefits">
+
+
+                <div class="register-benefit">
+
+                    <span class="benefit-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Personalized Experience
+                        </strong>
+
+                        <small>
+                            Discover products made for you
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="register-benefit">
+
+                    <span class="benefit-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Exclusive Offers
+                        </strong>
+
+                        <small>
+                            Get access to member-only deals
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="register-benefit">
+
+                    <span class="benefit-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Easy Shopping
+                        </strong>
+
+                        <small>
+                            Track orders and manage your wishlist
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="register-showcase-bottom">
+
+            <span>
+                © 2026 VYBE
+            </span>
+
+            <span>
+                Better shopping starts here.
+            </span>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ================= RIGHT SIDE ================= -->
+
+    <section class="register-container">
+
+
+        <div class="register-box">
+
+
+            <div class="register-heading">
+
+
+                <span class="register-label">
+                    CREATE ACCOUNT
+                </span>
+
+
+                <h2>
+
+                    Join <em>VYBE.</em>
+
+                </h2>
+
+
+                <p>
+
+                    Fill in your details to create your account.
+
+                </p>
+
+
+            </div>
+
+
+            <!-- ================= WARNING BOX ================= -->
+
+
+            <div class="register-warning">
+
+
+                <span class="register-warning-icon">
+                    !
+                </span>
+
+
+                <div>
+
+                    <strong>
+                        Account information
+                    </strong>
+
+
+                    <p>
+                    
+                        Please provide accurate details to create your account.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= REGISTER FORM ================= -->
+
+
+            <form
+                method="POST"
+                enctype="multipart/form-data"
+                class="register-form"
+            >
+
+
+                {% csrf_token %}
+
+
+                <!-- NAME -->
+
+                <div class="register-input-group">
+
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="username"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="register-input-group">
+
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="useremail"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div class="register-input-group">
+
+
+                    <label for="contact">
+                        Contact Number
+                    </label>
+
+
+                    <input
+                        type="tel"
+                        id="contact"
+                        name="usercontact"
+                        placeholder="Enter your contact number"
+                        required
+                    >
+
+
+                </div>
+
+
+                <!-- PROFILE IMAGE -->
+
+                <div class="register-input-group">
+
+
+                    <label for="profile">
+                        Profile Picture
+                    </label>
+
+
+                    <input
+                        type="file"
+                        id="profile"
+                        name="userprofile"
+                        accept="image/*"
+                    >
+
+
+                </div>
+
+
+                <!-- GENDER -->
+
+                <div class="register-input-group">
+
+
+                    <label for="gender">
+                        Gender
+                    </label>
+
+
+                    <select
+                        id="gender"
+                        name="usergender"
+                        required
+                    >
+
+                        <option value="">
+                            Select your gender
+                        </option>
+
+                        <option value="male">
+                            Male
+                        </option>
+
+                        <option value="female">
+                            Female
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                        <option value="prefer_not_to_say">
+                            Prefer not to say
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+                <!-- PASSWORD -->
+                
+                <div class="register-input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="userpassword"
+                        placeholder="Create a strong password"
+                        required
+                    >
+
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="register-input-group">
+
+
+                    <label for="confirm_password">
+                        Confirm Password
+                    </label>
+
+
+                    <input
+                        type="password"
+                        id="confirm_password"
+                        name="userconfirmpassword"
+                        placeholder="Confirm your password"
+                        required
+                    >
+
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <label class="register-terms">
+
+
+                    <input
+                        type="checkbox"
+                        name="terms"
+                        required
+                    >
+
+
+                    <span>
+
+                        I agree to the
+                        <a href="#">
+                            Terms & Conditions
+                        </a>
+                        and
+                        <a href="#">
+                            Privacy Policy
+                        </a>
+
+                    </span>
+
+
+                </label>
+
+
+                <!-- SUBMIT BUTTON -->
+
+                <button
+                    type="submit"
+                    class="register-submit"
+                >
+
+                    Create Account
+
+                    <span>
+                        ↗
+                    </span>
+
+                </button>
+
+
+            </form>
+
+
+            <!-- LOGIN LINK -->
+
+
+            <p class="register-login-text">
+
+
+                Already have an account?
+
+
+                <a href="#">
+                    Sign In
+                </a>
+
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+</body>
+
+</html>

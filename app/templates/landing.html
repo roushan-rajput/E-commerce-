@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VYBE | Modern Shopping</title>
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/landing.css' %}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="landing-navbar">
+
+    <a href="#" class="landing-logo">
+        VYBE<span>.</span>
+    </a>
+
+    <nav class="landing-navigation">
+
+        <a href="#" class="active">Home</a>
+
+        <a href="#collections">
+            Collections
+        </a>
+
+        <a href="#trending">
+            Trending
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+    </nav>
+
+    <div class="landing-actions">
+
+        <a href="#" class="landing-search">
+            <span>⌕</span>
+        </a>
+
+        <a href="#" class="landing-cart">
+            <span>🛒</span>
+            <small>0</small>
+        </a>
+
+        <a href="{% url 'login' %}" class="landing-login">
+            Login
+        </a>
+
+        <a href="{% url 'register' %}" class="landing-register">
+            Register
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="landing-hero">
+
+    <div class="landing-hero-content">
+
+        <div class="landing-hero-label">
+
+            <span class="landing-label-line"></span>
+
+            CURATED FOR YOUR LIFESTYLE
+
+        </div>
+
+        <h1>
+
+            Find things
+            <br>
+
+            <span>you'll love.</span>
+
+        </h1>
+
+        <p>
+
+            Discover products that match your style,
+            elevate your everyday and make life a little
+            more extraordinary.
+
+        </p>
+
+        <div class="landing-hero-buttons">
+
+            <a href="#trending" class="landing-primary-btn">
+
+                Explore Products
+
+                <span>↗</span>
+
+            </a>
+
+            <a href="#collections" class="landing-outline-btn">
+
+                Browse Collections
+
+            </a>
+
+        </div>
+
+        <div class="landing-trust">
+
+            <div class="landing-trust-users">
+
+                <span>👨🏻</span>
+                <span>👩🏻</span>
+                <span>👨🏽</span>
+                <span>👩🏽</span>
+
+            </div>
+
+            <div class="landing-trust-text">
+
+                <strong>25,000+</strong>
+
+                <p>
+                    happy shoppers and counting
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= HERO VISUAL ================= -->
+
+    <div class="landing-hero-visual">
+
+        <div class="landing-visual-circle"></div>
+
+        <div class="landing-floating-card landing-floating-card-one">
+
+            <span class="landing-floating-icon">
+                ✦
+            </span>
+
+            <div>
+
+                <strong>
+                    New Arrivals
+                </strong>
+
+                <small>
+                    Just dropped
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="landing-main-product">
+
+            <div class="landing-product-top">
+
+                <span>
+                    EDITOR'S PICK
+                </span>
+
+                <span>
+                    ♡
+                </span>
+
+            </div>
+
+            <div class="landing-product-image">
+
+                👜
+
+            </div>
+
+            <div class="landing-product-info">
+
+                <div>
+
+                    <small>
+                        PREMIUM COLLECTION
+                    </small>
+
+                    <h3>
+                        Everyday Essentials
+                    </h3>
+
+                </div>
+
+                <strong>
+                    ₹2,499
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="landing-floating-card landing-floating-card-two">
+
+            <span class="landing-floating-icon">
+                ✓
+            </span>
+
+            <div>
+
+                <strong>
+                    Premium Quality
+                </strong>
+
+                <small>
+                    Always guaranteed
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TRUST BAR ================= -->
+
+<section class="landing-trust-bar">
+
+    <span>
+        FREE SHIPPING ON ORDERS ABOVE ₹999
+    </span>
+
+    <span>
+        SECURE PAYMENTS
+    </span>
+
+    <span>
+        EASY 7-DAY RETURNS
+    </span>
+
+    <span>
+        24/7 CUSTOMER SUPPORT
+    </span>
+
+</section>
+
+
+<!-- ================= COLLECTIONS ================= -->
+
+<section class="landing-section" id="collections">
+
+    <div class="landing-section-heading">
+
+        <div>
+
+            <span class="landing-section-label">
+                FIND YOUR STYLE
+            </span>
+
+            <h2>
+                Shop by <em>Collection</em>
+            </h2>
+
+        </div>
+
+        <a href="#" class="landing-view-all">
+            View all collections ↗
+        </a>
+
+    </div>
+
+
+    <div class="landing-collection-grid">
+
+
+        <a href="#" class="landing-collection-card landing-collection-fashion">
+
+            <div class="landing-collection-number">
+                01
+            </div>
+
+            <div class="landing-collection-content">
+
+                <h3>
+                    Fashion
+                </h3>
+
+                <p>
+                    Style that speaks for you
+                </p>
+
+            </div>
+
+            <span class="landing-collection-arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+        <a href="#" class="landing-collection-card landing-collection-tech">
+
+            <div class="landing-collection-number">
+                02
+            </div>
+
+            <div class="landing-collection-content">
+
+                <h3>
+                    Technology
+                </h3>
+
+                <p>
+                    Smarter ways to live
+                </p>
+
+            </div>
+
+            <span class="landing-collection-arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+        <a href="#" class="landing-collection-card landing-collection-home">
+
+            <div class="landing-collection-number">
+                03
+            </div>
+
+            <div class="landing-collection-content">
+
+                <h3>
+                    Home & Living
+                </h3>
+
+                <p>
+                    Spaces made beautiful
+                </p>
+
+            </div>
+
+            <span class="landing-collection-arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+        <a href="#" class="landing-collection-card landing-collection-beauty">
+
+            <div class="landing-collection-number">
+                04
+            </div>
+
+            <div class="landing-collection-content">
+
+                <h3>
+                    Accessories
+                </h3>
+
+                <p>
+                    The perfect finishing touch
+                </p>
+
+            </div>
+
+            <span class="landing-collection-arrow">
+                ↗
+            </span>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TRENDING PRODUCTS ================= -->
+
+<section class="landing-products-section" id="trending">
+
+    <div class="landing-section-heading">
+
+        <div>
+
+            <span class="landing-section-label">
+                HANDPICKED FOR YOU
+            </span>
+
+            <h2>
+                Trending <em>Now</em>
+            </h2>
+
+        </div>
+
+        <a href="#" class="landing-view-all">
+            Explore all products ↗
+        </a>
+
+    </div>
+
+
+    <div class="landing-products-grid">
+
+
+        <article class="landing-product-card">
+
+            <div class="landing-product-card-image landing-product-bg-one">
+
+                <span class="landing-product-badge">
+                    BESTSELLER
+                </span>
+
+                <span class="landing-wishlist">
+                    ♡
+                </span>
+
+                <div class="landing-product-symbol">
+                    ◉
+                </div>
+
+            </div>
+
+            <div class="landing-product-card-info">
+
+                <div>
+
+                    <small>
+                        TECHNOLOGY
+                    </small>
+
+                    <h3>
+                        Wireless Headphones
+                    </h3>
+
+                </div>
+
+                <strong>
+                    ₹2,499
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <article class="landing-product-card">
+
+            <div class="landing-product-card-image landing-product-bg-two">
+
+                <span class="landing-product-badge">
+                    NEW
+                </span>
+
+                <span class="landing-wishlist">
+                    ♡
+                </span>
+
+                <div class="landing-product-symbol">
+                    ◇
+                </div>
+
+            </div>
+
+            <div class="landing-product-card-info">
+
+                <div>
+
+                    <small>
+                        ACCESSORIES
+                    </small>
+
+                    <h3>
+                        Minimalist Watch
+                    </h3>
+
+                </div>
+
+                <strong>
+                    ₹3,999
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <article class="landing-product-card">
+
+            <div class="landing-product-card-image landing-product-bg-three">
+
+                <span class="landing-product-badge">
+                    TRENDING
+                </span>
+
+                <span class="landing-wishlist">
+                    ♡
+                </span>
+
+                <div class="landing-product-symbol">
+                    ✦
+                </div>
+
+            </div>
+
+            <div class="landing-product-card-info">
+
+                <div>
+
+                    <small>
+                        FASHION
+                    </small>
+
+                    <h3>
+                        Premium Sneakers
+                    </h3>
+
+                </div>
+
+                <strong>
+                    ₹4,499
+                </strong>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="landing-cta">
+
+    <div class="landing-cta-content">
+
+        <span class="landing-section-label">
+            YOUR NEXT FAVORITE THING
+        </span>
+
+        <h2>
+
+            Something good
+            <br>
+
+            is waiting for <em>you.</em>
+
+        </h2>
+
+        <a href="#" class="landing-primary-btn">
+
+            Start Shopping
+
+            <span>↗</span>
+
+        </a>
+
+    </div>
+
+    <div class="landing-cta-shape">
+        ✦
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="landing-footer">
+
+    <div class="landing-footer-top">
+
+        <div class="landing-footer-brand">
+
+            <a href="#" class="landing-logo">
+                VYBE<span>.</span>
+            </a>
+
+            <p>
+                Bringing better products
+                and better experiences
+                to your everyday life.
+            </p>
+
+        </div>
+
+
+        <div class="landing-footer-column">
+
+            <h4>
+                Shop
+            </h4>
+
+            <a href="#">
+                All Products
+            </a>
+
+            <a href="#">
+                New Arrivals
+            </a>
+
+            <a href="#">
+                Best Sellers
+            </a>
+
+            <a href="#">
+                Collections
+            </a>
+
+        </div>
+
+
+        <div class="landing-footer-column">
+
+            <h4>
+                Company
+            </h4>
+
+            <a href="#">
+                About Us
+            </a>
+
+            <a href="#">
+                Contact
+            </a>
+
+            <a href="#">
+                Careers
+            </a>
+
+            <a href="#">
+                Privacy Policy
+            </a>
+
+        </div>
+
+
+        <div class="landing-footer-column">
+
+            <h4>
+                Account
+            </h4>
+
+            <a href="#">
+                Login
+            </a>
+
+            <a href="#">
+                Register
+            </a>
+
+            <a href="#">
+                My Orders
+            </a>
+
+            <a href="#">
+                Wishlist
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="landing-footer-bottom">
+
+        <span>
+            © 2026 VYBE. All rights reserved.
+        </span>
+
+        <span>
+            Made for better shopping.
+        </span>
+
+    </div>
+
+</footer>
+```
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+```
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login | VYBE</title>
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+```
+
+</head>
+
+<body>
+
+```
+<main class="login-page">
+
+    <!-- LEFT SIDE -->
+
+    <section class="login-showcase">
+
+        <a href="#" class="login-logo">
+            VYBE<span>.</span>
+        </a>
+
+        <div class="showcase-content">
+
+            <span class="showcase-label">
+                WELCOME BACK
+            </span>
+
+            <h1>
+                Your world
+                <br>
+                is waiting <em>for you.</em>
+            </h1>
+
+            <p>
+                Sign in to continue your journey and discover
+                everything VYBE has curated especially for you.
+            </p>
+
+        </div>
+
+        <div class="showcase-bottom">
+
+            <span>
+                © 2026 VYBE
+            </span>
+
+            <span>
+                Premium shopping experience
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- RIGHT SIDE -->
+
+    <section class="login-container">
+
+        <div class="login-box">
+
+            <div class="login-heading">
+
+                <span class="login-label">
+                    ACCOUNT ACCESS
+                </span>
+
+                <h2>
+                    Welcome <em>back.</em>
+                </h2>
+
+                <p>
+                    Enter your details to access your account.
+                </p>
+
+            </div>
+
+
+            <!-- WARNING / MESSAGE BOX -->
+
+            <div class="login-warning">
+
+                <span class="warning-icon">
+                    !
+                </span>
+
+                <div>
+
+                    <strong>
+                        Login required
+                    </strong>
+
+                    <p>
+                        Please enter your email and password to continue.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGIN FORM -->
+
+            <form method="POST" class="login-form">
+
+                {% csrf_token %}
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <div class="password-label">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <a href="#">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="login-options">
+
+                    <label class="remember-me">
+
+                        <input
+                            type="checkbox"
+                            name="remember"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-submit"
+                >
+
+                    Sign In
+
+                    <span>
+                        ↗
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <div class="login-divider">
+
+                <span>
+                    OR
+                </span>
+
+            </div>
+
+
+            <p class="register-text">
+
+                Don't have an account?
+
+                <a href="#">
+                    Create an account
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+```
+
+</body>
+</html>
