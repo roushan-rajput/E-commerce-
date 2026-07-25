@@ -386,3 +386,21 @@
         }
 
     }
+
+
+    cart-button {
+        padding: 9px 13px;
+        background: var(--accent);
+        border: 1px solid var(--accent);
+        border-radius: 5px;
+        color: #ffffff;
+        font-size: 9px;
+        font-weight: bold;
+        transition: 0.3s ease;
+    }
+
+    .cart-button:hover {
+        background: var(--accent-light);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 104, 71, 0.25);
+    }

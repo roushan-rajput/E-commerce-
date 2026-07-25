@@ -36,9 +36,13 @@
 
                 </div>
 
+                {% if is_admin %}
+
                 <a href="{% url 'addpro' %}" class="add-product-button">
                     + Add Product
                 </a>
+
+                {% endif %}
 
             </div>
 
@@ -96,6 +100,7 @@
 
 
                             <div class="product-actions">
+                                {% if is_admin %}
 
                                 <a href="#" class="edit-button">
                                     EDIT
@@ -105,6 +110,13 @@
                                     DEL
                                 </a>
 
+                                {% else %}
+
+                                <a href="#" class="cart-button">
+                                    ADD TO CART
+                                </a>
+
+                                {% endif %}
                             </div>
 
                         </div>

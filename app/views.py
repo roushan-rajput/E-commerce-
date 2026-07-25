@@ -164,4 +164,20 @@ def addpro(req):
 
 def allpro(req):
     products = Product.objects.all()
-    return render(req, 'allpro.html', {'products': products})
+
+    is_admin = req.session.get("admin", False)
+
+    user_id = req.session.get("user_id")
+
+    if not is_admin and not user_id:
+        return redirect("login")
+
+    return render(
+        req,
+        "allpro.html",
+        {
+            "products": products,
+            "is_admin": is_admin
+        }
+    )
+    
