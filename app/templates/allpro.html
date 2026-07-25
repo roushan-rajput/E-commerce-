@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>All Products | VYBE</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/allpro.css' %}">
+</head>
+
+<body>
+    <div class="products-page">
+
+        <div class="products-container">
+
+            <div class="products-header">
+
+                <div>
+
+                    <span class="page-label">
+                        PRODUCT MANAGEMENT
+                    </span>
+
+                    <h1>
+                        All <em>Products.</em>
+                    </h1>
+
+                    <p>
+                        Manage all products available in your store.
+                    </p>
+
+                </div>
+
+                <a href="{% url 'addpro' %}" class="add-product-button">
+                    + Add Product
+                </a>
+
+            </div>
+
+
+            <div class="product-count">
+
+                <span>
+                    TOTAL PRODUCTS
+                </span>
+
+                <strong>
+                    {{ products|length }}
+                </strong>
+
+            </div>
+
+
+            <div class="product-grid">
+
+                {% for product in products %}
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <img src="{{ product.productimage.url }}" alt="{{ product.productname }}">
+
+                        <div class="product-overlay">
+
+                            <span>
+                                PRODUCT
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-content">
+
+                        <h2>
+                            {{ product.productname }}
+                        </h2>
+
+                        <p class="product-description">
+                            {{ product.productdescription }}
+                        </p>
+
+
+                        <div class="product-bottom">
+
+                            <strong class="product-price">
+                                ${{ product.productprice }}
+                            </strong>
+
+
+                            <div class="product-actions">
+
+                                <a href="#" class="edit-button">
+                                    EDIT
+                                </a>
+
+                                <a href="#" class="delete-button">
+                                    DEL
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <div class="empty-products">
+
+                    <div class="empty-icon">
+                        ◈
+                    </div>
+
+                    <h2>
+                        No Products Found
+                    </h2>
+
+                    <p>
+                        Add your first product to start managing your store.
+                    </p>
+
+                    <a href="{% url 'addpro' %}">
+                        + Add Your First Product
+                    </a>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

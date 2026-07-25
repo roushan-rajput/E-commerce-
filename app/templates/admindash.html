@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    ```
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | VYBE</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/admindash.css' %}">
+    ```
+
+</head>
+
+<body>
+
+    ```
+    <div class="admin-layout">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                VYBE<span>.</span>
+            </div>
+
+            <p class="admin-label">
+                ADMIN PANEL
+            </p>
+
+            <nav>
+
+                <a href="#" class="nav-link active">
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="{% url 'addpro' %}" class="nav-link">
+                    <span>＋</span>
+                    Add Product
+                </a>
+
+                <a href="{% url 'allpro' %}" class="nav-link">
+                    <span>◈</span>
+                    Products
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>▣</span>
+                    Orders
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>♙</span>
+                    Customers
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>⚙</span>
+                    Settings
+                </a>
+
+            </nav>
+
+            <a href="{% url 'login' %}" class="logout">
+                ↪ &nbsp; Logout
+            </a>
+
+        </aside>
+
+
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+
+                    <p class="small-title">
+                        ADMIN DASHBOARD
+                    </p>
+
+                    <h1>
+                        Welcome back,
+                        <span>Administrator</span>
+                    </h1>
+
+                </div>
+
+                <div class="admin-user">
+
+                    <div class="avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Administrator
+                        </strong>
+
+                        <small>
+                            admin@gmail.com
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section class="welcome-banner">
+
+                <div>
+
+                    <p>
+                        STORE OVERVIEW
+                    </p>
+
+                    <h2>
+                        Manage your store
+                        <em>effortlessly.</em>
+                    </h2>
+
+                    <span>
+                        Everything you need to manage your e-commerce business in one place.
+                    </span>
+
+                </div>
+
+                <a href="{% url 'addpro' %}" class="add-product-button">
+                    + Add Product
+                </a>
+
+            </section>
+
+
+            <section class="stats">
+
+                <div class="stat-box">
+
+                    <div class="stat-icon">
+                        $
+                    </div>
+
+                    <div>
+
+                        <p>
+                            TOTAL REVENUE
+                        </p>
+
+                        <h3>
+                            $0.00
+                        </h3>
+
+                        <span>
+                            This month
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <div class="stat-icon">
+                        ▣
+                    </div>
+
+                    <div>
+
+                        <p>
+                            TOTAL ORDERS
+                        </p>
+
+                        <h3>
+                            0
+                        </h3>
+
+                        <span>
+                            All orders
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <div class="stat-icon">
+                        ◈
+                    </div>
+
+                    <div>
+
+                        <p>
+                            PRODUCTS
+                        </p>
+
+                        <h3>
+                            0
+                        </h3>
+
+                        <span>
+                            Active products
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <div class="stat-icon">
+                        ♙
+                    </div>
+
+                    <div>
+
+                        <p>
+                            CUSTOMERS
+                        </p>
+
+                        <h3>
+                            0
+                        </h3>
+
+                        <span>
+                            Registered users
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="content-grid">
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <p>
+                                STORE ACTIVITY
+                            </p>
+
+                            <h2>
+                                Recent Orders
+                            </h2>
+
+                        </div>
+
+                        <a href="#">
+                            View All →
+                        </a>
+
+                    </div>
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+                            ▣
+                        </div>
+
+                        <h3>
+                            No orders yet
+                        </h3>
+
+                        <p>
+                            New customer orders will appear here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <p>
+                                MANAGEMENT
+                            </p>
+
+                            <h2>
+                                Quick Actions
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+                        <a href="+">
+
+                            <span>＋</span>
+
+                            <div>
+
+                                <strong>
+                                    Add New Product
+                                </strong>
+
+                                <small>
+                                    Create product listing
+                                </small>
+
+                            </div>
+
+                            <b>→</b>
+
+                        </a>
+
+
+                        <a href="#">
+
+                            <span>◈</span>
+
+                            <div>
+
+                                <strong>
+                                    Manage Products
+                                </strong>
+
+                                <small>
+                                    View all products
+                                </small>
+
+                            </div>
+
+                            <b>→</b>
+
+                        </a>
+
+
+                        <a href="#">
+
+                            <span>▣</span>
+
+                            <div>
+
+                                <strong>
+                                    Manage Orders
+                                </strong>
+
+                                <small>
+                                    Check customer orders
+                                </small>
+
+                            </div>
+
+                            <b>→</b>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+    ```
+
+</body>
+
+</html>

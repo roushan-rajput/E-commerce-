@@ -10,5 +10,13 @@ class User(models.Model):
     userpassword = models.CharField(max_length=100)
     userconfirmpassword = models.CharField(max_length=100)
 
+
+class Product(models.Model):
+    productname = models.CharField(max_length=100)
+    productdescription = models.TextField()
+    productprice = models.DecimalField(max_digits=10, decimal_places=2)
+    productimage = models.ImageField(upload_to='product_images/')
+    
+
     def __str__(self):
         return self.username

@@ -1,0 +1,396 @@
+{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --background: #08090d;
+        --card: #111217;
+        --border: #292c35;
+        --text: #ffffff;
+        --muted: #858995;
+        --accent: #ff6847;
+        --accent-light: #ff8a70;
+        --dark-accent: #321d19;
+    }
+
+    body {
+        min-height: 100vh;
+        background: var(--background);
+        color: var(--text);
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        width: 450px;
+        height: 450px;
+        top: -200px;
+        right: -120px;
+        background: rgba(255, 104, 71, 0.08);
+        border-radius: 50%;
+        filter: blur(100px);
+        animation: backgroundMove 8s ease-in-out infinite alternate;
+        pointer-events: none;
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        width: 350px;
+        height: 350px;
+        bottom: -180px;
+        left: 200px;
+        background: rgba(90, 60, 255, 0.04);
+        border-radius: 50%;
+        filter: blur(100px);
+        animation: backgroundMove 10s ease-in-out infinite alternate-reverse;
+        pointer-events: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .product-page {
+        min-height: 100vh;
+        padding: 50px 8%;
+    }
+
+    .product-container {
+        width: 100%;
+        max-width: 1050px;
+        margin: auto;
+    }
+
+    .product-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 35px;
+        animation: fadeDown 0.8s ease forwards;
+    }
+
+    .page-label {
+        color: var(--accent);
+        font-size: 10px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    .product-header h1 {
+        margin-top: 12px;
+        font-family: Georgia, serif;
+        font-size: 42px;
+        font-weight: normal;
+    }
+
+    .product-header h1 em {
+        color: var(--accent);
+    }
+
+    .product-header p {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 14px;
+    }
+
+    .back-button {
+        padding: 12px 18px;
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        color: var(--muted);
+        font-size: 13px;
+        transition: 0.3s ease;
+    }
+
+    .back-button:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+        transform: translateX(-5px);
+    }
+
+    .product-form {
+        background: rgba(17, 18, 23, 0.88);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        backdrop-filter: blur(15px);
+        animation: fadeUp 0.9s ease forwards;
+    }
+
+    .form-section {
+        padding: 40px;
+    }
+
+    .section-title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 35px;
+    }
+
+    .section-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--dark-accent);
+        border-radius: 10px;
+        color: var(--accent);
+        font-size: 21px;
+        animation: iconFloat 3s ease-in-out infinite;
+    }
+
+    .section-title h2 {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .section-title p {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 10px;
+        color: #d9d9de;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 15px 17px;
+        background: #0c0d11;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        outline: none;
+        color: var(--text);
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        transition: 0.35s ease;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: #5f626c;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(255, 104, 71, 0.08);
+        transform: translateY(-2px);
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 140px;
+    }
+
+    .price-input {
+        position: relative;
+    }
+
+    .price-input span {
+        position: absolute;
+        left: 17px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--accent);
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .price-input input {
+        padding-left: 38px;
+    }
+
+    .upload-box {
+        position: relative;
+        min-height: 190px;
+        border: 1px dashed #464955;
+        border-radius: 10px;
+        background: #0c0d11;
+        overflow: hidden;
+        transition: 0.35s ease;
+    }
+
+    .upload-box:hover {
+        border-color: var(--accent);
+        background: #111114;
+    }
+
+    .upload-box input[type="file"] {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .upload-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        pointer-events: none;
+    }
+
+    .upload-icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+        background: var(--dark-accent);
+        border-radius: 50%;
+        color: var(--accent);
+        font-size: 24px;
+        animation: uploadFloat 2.5s ease-in-out infinite;
+    }
+
+    .upload-content h3 {
+        font-size: 14px;
+    }
+
+    .upload-content p {
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 11px;
+    }
+
+    .form-footer {
+        padding: 25px 40px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+        background: #0e0f13;
+        border-top: 1px solid var(--border);
+    }
+
+    .cancel-button {
+        padding: 13px 22px;
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        color: var(--muted);
+        font-size: 13px;
+        transition: 0.3s ease;
+    }
+
+    .cancel-button:hover {
+        color: #ffffff;
+        border-color: #ffffff;
+    }
+
+    .submit-button {
+        padding: 13px 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border: none;
+        border-radius: 7px;
+        background: var(--accent);
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.35s ease;
+    }
+
+    .submit-button span {
+        font-size: 18px;
+        transition: 0.35s ease;
+    }
+
+    .submit-button:hover {
+        background: var(--accent-light);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(255, 104, 71, 0.25);
+    }
+
+    .submit-button:hover span {
+        transform: translateX(5px);
+    }
+
+    @keyframes fadeDown {
+        from {
+            opacity: 0;
+            transform: translateY(-25px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+    @keyframes iconFloat {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-7px);
+        }
+
+    }
+
+    @keyframes uploadFloat {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-8px);
+        }
+
+    }
+
+    @keyframes backgroundMove {
+        from {
+            transform: translate(0, 0) scale(1);
+        }
+
+        to {
+            transform: translate(-60px, 50px) scale(1.2);
+        }
+
+    }

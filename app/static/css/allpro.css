@@ -1,0 +1,388 @@
+{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --background: #08090d;
+        --card: #12141a;
+        --border: #292c35;
+        --text: #ffffff;
+        --muted: #858995;
+        --accent: #ff6847;
+        --accent-light: #ff8a70;
+        --dark-accent: #321d19;
+        --danger: #ff4d67;
+    }
+
+    body {
+        min-height: 100vh;
+        background: var(--background);
+        color: var(--text);
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        top: -220px;
+        right: -150px;
+        background: rgba(255, 104, 71, 0.08);
+        border-radius: 50%;
+        filter: blur(110px);
+        animation: backgroundMove 8s ease-in-out infinite alternate;
+        pointer-events: none;
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        bottom: -200px;
+        left: 180px;
+        background: rgba(90, 60, 255, 0.04);
+        border-radius: 50%;
+        filter: blur(110px);
+        animation: backgroundMove 10s ease-in-out infinite alternate-reverse;
+        pointer-events: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .products-page {
+        min-height: 100vh;
+        padding: 50px 7%;
+    }
+
+    .products-container {
+        width: 100%;
+        max-width: 1400px;
+        margin: auto;
+    }
+
+    .products-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        animation: fadeDown 0.8s ease forwards;
+    }
+
+    .page-label {
+        color: var(--accent);
+        font-size: 10px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    .products-header h1 {
+        margin-top: 12px;
+        font-family: Georgia, serif;
+        font-size: 42px;
+        font-weight: normal;
+    }
+
+    .products-header h1 em {
+        color: var(--accent);
+    }
+
+    .products-header p {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 14px;
+    }
+
+    .add-product-button {
+        padding: 14px 22px;
+        background: var(--accent);
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: bold;
+        transition: 0.35s ease;
+    }
+
+    .add-product-button:hover {
+        background: var(--accent-light);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(255, 104, 71, 0.25);
+    }
+
+    .product-count {
+        width: fit-content;
+        margin-bottom: 25px;
+        padding: 12px 18px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        animation: fadeUp 0.8s ease forwards;
+    }
+
+    .product-count span {
+        color: var(--muted);
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .product-count strong {
+        color: var(--accent);
+        font-size: 20px;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    .product-card {
+        position: relative;
+        overflow: hidden;
+        background: rgba(18, 20, 26, 0.9);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        animation: cardAppear 0.7s ease forwards;
+        transition: 0.4s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .product-image {
+        position: relative;
+        height: 230px;
+        overflow: hidden;
+        background: #1b1d24;
+    }
+
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        transition: 0.6s ease;
+    }
+
+    .product-card:hover .product-image img {
+        transform: scale(1.1);
+    }
+
+    .product-overlay {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        padding: 7px 10px;
+        background: rgba(8, 9, 13, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 5px;
+        backdrop-filter: blur(8px);
+    }
+
+    .product-overlay span {
+        color: #ffffff;
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .product-content {
+        padding: 20px;
+    }
+
+    .product-content h2 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .product-description {
+        height: 45px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.6;
+        overflow: hidden;
+    }
+
+    .product-bottom {
+        margin-top: 20px;
+        padding-top: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid var(--border);
+    }
+
+    .product-price {
+        color: var(--accent);
+        font-size: 18px;
+    }
+
+    .product-actions {
+        display: flex;
+        gap: 7px;
+    }
+
+    .edit-button,
+    .delete-button {
+        padding: 8px 10px;
+        border-radius: 5px;
+        font-size: 9px;
+        font-weight: bold;
+        transition: 0.3s ease;
+    }
+
+    .edit-button {
+        background: rgba(255, 104, 71, 0.12);
+        color: var(--accent);
+        border: 1px solid rgba(255, 104, 71, 0.2);
+    }
+
+    .edit-button:hover {
+        background: var(--accent);
+        color: #ffffff;
+        transform: translateY(-3px);
+    }
+
+    .delete-button {
+        background: rgba(255, 77, 103, 0.08);
+        color: var(--danger);
+        border: 1px solid rgba(255, 77, 103, 0.18);
+    }
+
+    .delete-button:hover {
+        background: var(--danger);
+        color: #ffffff;
+        transform: translateY(-3px);
+    }
+
+    .empty-products {
+        grid-column: 1 / -1;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        animation: fadeUp 0.8s ease forwards;
+    }
+
+    .empty-icon {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        background: var(--dark-accent);
+        border-radius: 15px;
+        color: var(--accent);
+        font-size: 30px;
+        animation: floatIcon 3s ease-in-out infinite;
+    }
+
+    .empty-products h2 {
+        font-size: 22px;
+    }
+
+    .empty-products p {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 13px;
+    }
+
+    .empty-products a {
+        margin-top: 22px;
+        padding: 13px 20px;
+        background: var(--accent);
+        border-radius: 7px;
+        font-size: 13px;
+        font-weight: bold;
+        transition: 0.3s ease;
+    }
+
+    .empty-products a:hover {
+        background: var(--accent-light);
+        transform: translateY(-4px);
+    }
+
+    @keyframes fadeDown {
+        from {
+            opacity: 0;
+            transform: translateY(-25px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+    @keyframes cardAppear {
+        from {
+            opacity: 0;
+            transform: translateY(40px) scale(0.96);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+    }
+
+    @keyframes floatIcon {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+
+    }
+
+    @keyframes backgroundMove {
+        from {
+            transform: translate(0, 0) scale(1);
+        }
+
+        to {
+            transform: translate(-60px, 50px) scale(1.2);
+        }
+
+    }

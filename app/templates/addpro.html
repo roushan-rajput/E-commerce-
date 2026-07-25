@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Product | VYBE</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/addpro.css' %}">
+
+
+</head>
+
+<body>
+
+    
+    <div class="product-page">
+
+        <div class="product-container">
+
+            <div class="product-header">
+
+                <div>
+
+                    <span class="page-label">
+                        PRODUCT MANAGEMENT
+                    </span>
+
+                    <h1>
+                        Add New <em>Product.</em>
+                    </h1>
+
+                    <p>
+                        Create a new product and add it to your store collection.
+                    </p>
+
+                </div>
+
+                <a href="+" class="back-button">
+                    ← Back to Dashboard
+                </a>
+
+            </div>
+
+
+            <form method="POST" enctype="multipart/form-data" class="product-form">
+
+                {% csrf_token %}
+
+
+                <div class="form-section">
+
+                    <div class="section-title">
+
+                        <span class="section-icon">
+                            ◈
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                Product Information
+                            </h2>
+
+                            <p>
+                                Enter the basic details of your product.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="productname">
+                            Product Name
+                        </label>
+
+                        <input type="text" id="productname" name="productname" placeholder="Enter product name"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="productdescription">
+                            Product Description
+                        </label>
+
+                        <textarea id="productdescription" name="productdescription"
+                            placeholder="Write a detailed description of your product..." rows="6" required></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="productprice">
+                            Product Price
+                        </label>
+
+                        <div class="price-input">
+
+                            <span>
+                                $
+                            </span>
+
+                            <input type="number" id="productprice" name="productprice" placeholder="0.00" step="0.01"
+                                min="0" required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="productimage">
+                            Product Image
+                        </label>
+
+                        <div class="upload-box">
+
+                            <input type="file" id="productimage" name="productimage" accept="image/*" required>
+
+                            <div class="upload-content">
+
+                                <div class="upload-icon">
+                                    ↑
+                                </div>
+
+                                <h3>
+                                    Upload Product Image
+                                </h3>
+
+                                <p>
+                                    PNG, JPG or WEBP images are supported
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-footer">
+
+                    <a href="{% url 'admindash' %}" class="cancel-button">
+                        Cancel
+                    </a>
+
+                    <button type="submit" class="submit-button">
+                        Add Product
+                        <span>
+                            →
+                        </span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+    
+
+</body>
+
+</html>

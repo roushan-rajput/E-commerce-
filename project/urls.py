@@ -25,10 +25,12 @@ urlpatterns = [
     path('', views.landing, name='landing'),
     path('login/', views.login, name='login'),
     path('register/', views.register, name='register'),
+    path('admindash/', views.admindash, name='admindash'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('logout/', views.logout, name='logout'),
 
-    
+    path('addpro/', views.addpro, name='addpro'),                 #product 
+    path('allpro/', views.allpro, name='allpro'),                 #product 
 
 ]
 if settings.DEBUG:
