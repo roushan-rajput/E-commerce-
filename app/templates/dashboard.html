@@ -4,424 +4,184 @@
 
 <head>
 
-```
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    ```
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard | VYBE</title>
+    <title>Dashboard | VYBE</title>
 
-{% load static %}
+    {% load static %}
 
-<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-```
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+        rel="stylesheet">
+    ```
 
 </head>
 
 <body>
 
-```
-<!-- ================= SIDEBAR ================= -->
+    ```
+    <!-- ================= SIDEBAR ================= -->
 
-<aside class="dashboard-sidebar">
-
-
-    <a href="#" class="dashboard-logo">
-
-        VYBE<span>.</span>
-
-    </a>
+    <aside class="dashboard-sidebar">
 
 
-    <nav class="dashboard-navigation">
-
-
-        <a href="#" class="dashboard-nav-link active">
-
-            <span>⌂</span>
-
-            Dashboard
-
-        </a>
-
-
-        <a href="#" class="dashboard-nav-link">
-
-            <span>◈</span>
-
-            Explore Products
-
-        </a>
-
-
-        <a href="#" class="dashboard-nav-link">
-
-            <span>♡</span>
-
-            Wishlist
-
-        </a>
-
-
-        <a href="#" class="dashboard-nav-link">
-
-            <span>▣</span>
-
-            My Orders
-
-        </a>
-
-
-    </nav>
-
-
-    <div class="sidebar-bottom">
-
-
-        <a href="#" class="dashboard-nav-link">
-
-            <span>⚙</span>
-
-            Settings
-
-        </a>
-
-
-        <a href="{% url 'login' %}" class="dashboard-nav-link logout-link">
-
-            <span>↪</span>
-
-            Logout
-
-        </a>
-
-
-    </div>
-
-
-</aside>
-
-
-<!-- ================= MAIN CONTENT ================= -->
-
-<main class="dashboard-main">
-
-
-    <!-- TOPBAR -->
-
-    <header class="dashboard-topbar">
-
-
-        <div class="dashboard-mobile-logo">
+        <a href="#" class="dashboard-logo">
 
             VYBE<span>.</span>
 
-        </div>
-
-
-        <div class="dashboard-search">
-
-
-            <span>
-                ⌕
-            </span>
-
-
-            <input
-                type="text"
-                placeholder="Search products..."
-            >
-
-
-        </div>
-
-
-        <div class="dashboard-user-area">
-
-
-            <button class="notification-button">
-
-                ♧
-
-                <small>
-                    3
-                </small>
-
-            </button>
-
-
-            <div class="dashboard-user">
-
-
-                <div class="user-avatar">
-
-                    {{ user_name|slice:":1"|upper }}
-
-                </div>
-
-
-                <div class="user-details">
-
-
-                    <strong>
-
-                        {{ user_name }}
-
-                    </strong>
-
-
-                    <small>
-
-                        Member
-
-                    </small>
-
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-    </header>
-
-
-    <!-- WELCOME SECTION -->
-
-    <section class="dashboard-welcome">
-
-
-        <div>
-
-
-            <span class="welcome-label">
-
-                YOUR PERSONAL SPACE
-
-            </span>
-
-
-            <h1>
-
-                Welcome back,
-
-                <em>
-                    {{ user_name }}.
-                </em>
-
-            </h1>
-
-
-            <p>
-
-                Discover something extraordinary today.
-
-                We've curated a collection of products just for you.
-
-            </p>
-
-
-        </div>
-
-
-        <a href="#" class="explore-button">
-
-            Explore Collection
-
-            <span>
-                ↗
-            </span>
 
         </a>
 
 
-    </section>
+        <nav class="dashboard-navigation">
 
 
-    <!-- STATISTICS -->
+            <a href="#" class="dashboard-nav-link active">
 
-    <section class="dashboard-stats">
+                <span>⌂</span>
 
+                Dashboard
 
-        <div class="stat-card">
-
-
-            <div class="stat-icon">
-                ◇
-            </div>
+            </a>
 
 
-            <div>
+            <a href="#" class="dashboard-nav-link">
 
-                <small>
-                    TOTAL ORDERS
-                </small>
+                <span>◈</span>
 
+                Explore Products
 
-                <strong>
-                    0
-                </strong>
+            </a>
 
 
-                <p>
-                    Start shopping today
-                </p>
+            <a href="#" class="dashboard-nav-link">
 
-            </div>
+                <span>♡</span>
 
+                Wishlist
 
-        </div>
-
-
-        <div class="stat-card">
+            </a>
 
 
-            <div class="stat-icon">
-                ♡
-            </div>
+            <a href="#" class="dashboard-nav-link">
+
+                <span>▣</span>
+
+                My Orders
+
+            </a>
 
 
-            <div>
-
-                <small>
-                    WISHLIST ITEMS
-                </small>
+        </nav>
 
 
-                <strong>
-                    0
-                </strong>
+        <div class="sidebar-bottom">
 
 
-                <p>
-                    Save your favourites
-                </p>
+            <a href="#" class="dashboard-nav-link">
 
-            </div>
+                <span>⚙</span>
 
+                Settings
 
-        </div>
-
-
-        <div class="stat-card">
+            </a>
 
 
-            <div class="stat-icon">
-                ◉
-            </div>
+            <a href="{% url 'logout' %}" class="dashboard-nav-link logout-link">
 
+                <span>↪</span>
 
-            <div>
+                Logout
 
-                <small>
-                    ACCOUNT STATUS
-                </small>
-
-
-                <strong class="active-status">
-                    ACTIVE
-                </strong>
-
-
-                <p>
-                    Your account is secure
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- PRODUCTS SECTION -->
-
-    <section class="dashboard-products">
-
-
-        <div class="section-heading">
-
-
-            <div>
-
-                <span>
-                    CURATED FOR YOU
-                </span>
-
-
-                <h2>
-
-                    Featured <em>discoveries.</em>
-
-                </h2>
-
-            </div>
-
-
-            <a href="#">
-                View all →
             </a>
 
 
         </div>
 
 
-        <div class="product-grid">
+    </aside>
 
 
-            <div class="dashboard-product-card">
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="dashboard-main">
 
 
-                <div class="product-image product-one">
+        <!-- TOPBAR -->
+
+        <header class="dashboard-topbar">
 
 
-                    <span class="product-badge">
-                        NEW
-                    </span>
+            <div class="dashboard-mobile-logo">
+
+                VYBE<span>.</span>
+
+            </div>
 
 
-                    <span class="product-symbol">
-                        ◉
-                    </span>
+            <div class="dashboard-search">
 
 
-                    <button class="product-heart">
-                        ♡
-                    </button>
+                <span>
+                    ⌕
+                </span>
 
 
-                </div>
+                <input type="text" placeholder="Search products...">
 
 
-                <div class="product-info">
+            </div>
 
 
-                    <div>
-
-                        <small>
-                            TECHNOLOGY
-                        </small>
+            <div class="dashboard-user-area">
 
 
-                        <h3>
-                            Modern Essentials
-                        </h3>
+                <button class="notification-button">
+
+                    ♧
+
+                    <small>
+                        3
+                    </small>
+
+                </button>
+
+
+                <div class="dashboard-user">
+
+
+                    <div class="user-avatar">
+
+                        {{ user_name|slice:":1"|upper }}
 
                     </div>
 
 
-                    <strong>
-                        ₹2,499
-                    </strong>
+                    <div class="user-details">
+
+
+                        <strong>
+
+                            {{ user_name }}
+
+                        </strong>
+
+
+                        <small>
+
+                            Member
+
+                        </small>
+
+
+                    </div>
 
 
                 </div>
@@ -430,151 +190,49 @@
             </div>
 
 
-            <div class="dashboard-product-card">
+        </header>
 
 
-                <div class="product-image product-two">
+        <!-- WELCOME SECTION -->
+
+        <section class="dashboard-welcome">
 
 
-                    <span class="product-badge">
-                        TRENDING
-                    </span>
+            <div>
 
 
-                    <span class="product-symbol">
-                        ◇
-                    </span>
+                <span class="welcome-label">
+
+                    YOUR PERSONAL SPACE
+
+                </span>
 
 
-                    <button class="product-heart">
-                        ♡
-                    </button>
+                <h1>
+
+                    Welcome,
+
+                    <em>
+                        {{ user.username }}
+                    </em>
+
+                </h1>
 
 
-                </div>
+                <p>
+                    Discover something extraordinary today.
 
+                    We've curated a collection of products just for you.
 
-                <div class="product-info">
-
-
-                    <div>
-
-                        <small>
-                            LIFESTYLE
-                        </small>
-
-
-                        <h3>
-                            Everyday Collection
-                        </h3>
-
-                    </div>
-
-
-                    <strong>
-                        ₹1,899
-                    </strong>
-
-
-                </div>
+                </p>
 
 
             </div>
 
 
-            <div class="dashboard-product-card">
+            <a href="#" class="explore-button">
 
-
-                <div class="product-image product-three">
-
-
-                    <span class="product-badge">
-                        EDITOR'S PICK
-                    </span>
-
-
-                    <span class="product-symbol">
-                        ✦
-                    </span>
-
-
-                    <button class="product-heart">
-                        ♡
-                    </button>
-
-
-                </div>
-
-
-                <div class="product-info">
-
-
-                    <div>
-
-                        <small>
-                            PREMIUM
-                        </small>
-
-
-                        <h3>
-                            Signature Selection
-                        </h3>
-
-                    </div>
-
-
-                    <strong>
-                        ₹3,299
-                    </strong>
-
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- BOTTOM BANNER -->
-
-    <section class="dashboard-banner">
-
-
-        <div>
-
-            <span>
-                VYBE MEMBER
-            </span>
-
-
-            <h2>
-
-                Something special
-
-                <em>
-                    awaits you.
-                </em>
-
-            </h2>
-
-
-            <p>
-
-                Explore our latest collection and find something
-
-                that feels uniquely yours.
-
-            </p>
-
-
-            <a href="#">
-
-                Start Exploring
+                Explore Collection
 
                 <span>
                     ↗
@@ -582,21 +240,359 @@
 
             </a>
 
-        </div>
+
+            
+        </section>
 
 
-        <div class="banner-symbol">
+        <!-- STATISTICS -->
 
-            ✦
-
-        </div>
+        <section class="dashboard-stats">
 
 
-    </section>
+            <div class="stat-card">
 
 
-</main>
-```
+                <div class="stat-icon">
+                    ◇
+                </div>
+
+
+                <div>
+
+                    <small>
+                        TOTAL ORDERS
+                    </small>
+
+
+                    <strong>
+                        0
+                    </strong>
+
+
+                    <p>
+                        Start shopping today
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon">
+                    ♡
+                </div>
+
+
+                <div>
+
+                    <small>
+                        WISHLIST ITEMS
+                    </small>
+
+
+                    <strong>
+                        0
+                    </strong>
+
+
+                    <p>
+                        Save your favourites
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon">
+                    ◉
+                </div>
+
+
+                <div>
+
+                    <small>
+                        ACCOUNT STATUS
+                    </small>
+
+
+                    <strong class="active-status">
+                        ACTIVE
+                    </strong>
+
+
+                    <p>
+                        Your account is secure
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- PRODUCTS SECTION -->
+
+        <section class="dashboard-products">
+
+
+            <div class="section-heading">
+
+
+                <div>
+
+                    <span>
+                        CURATED FOR YOU
+                    </span>
+
+
+                    <h2>
+
+                        Featured <em>discoveries.</em>
+
+                    </h2>
+
+                </div>
+
+
+                <a href="#">
+                    View all →
+                </a>
+
+
+            </div>
+
+
+            <div class="product-grid">
+
+
+                <div class="dashboard-product-card">
+
+
+                    <div class="product-image product-one">
+
+
+                        <span class="product-badge">
+                            NEW
+                        </span>
+
+
+                        <span class="product-symbol">
+                            ◉
+                        </span>
+
+
+                        <button class="product-heart">
+                            ♡
+                        </button>
+
+
+                    </div>
+
+
+                    <div class="product-info">
+
+
+                        <div>
+
+                            <small>
+                                TECHNOLOGY
+                            </small>
+
+
+                            <h3>
+                                Modern Essentials
+                            </h3>
+
+                        </div>
+
+
+                        <strong>
+                            ₹2,499
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="dashboard-product-card">
+
+
+                    <div class="product-image product-two">
+                        <span class="product-badge">
+                            TRENDING
+                        </span>
+                        <span class="product-symbol">
+                            ◇
+                        </span>
+
+
+                        <button class="product-heart">
+                            ♡
+                        </button>
+
+
+                    </div>
+
+
+                    <div class="product-info">
+
+
+                        <div>
+
+                            <small>
+                                LIFESTYLE
+                            </small>
+
+
+                            <h3>
+                                Everyday Collection
+                            </h3>
+
+                        </div>
+
+
+                        <strong>
+                            ₹1,899
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="dashboard-product-card">
+
+
+                    <div class="product-image product-three">
+
+
+                        <span class="product-badge">
+                            EDITOR'S PICK
+                        </span>
+
+
+                        <span class="product-symbol">
+                            ✦
+                        </span>
+
+
+                        <button class="product-heart">
+                            ♡
+                        </button>
+
+
+                    </div>
+
+
+                    <div class="product-info">
+
+
+                        <div>
+
+                            <small>
+                                PREMIUM
+                            </small>
+
+
+                            <h3>
+                                Signature Selection
+                            </h3>
+
+                        </div>
+
+
+                        <strong>
+                            ₹3,299
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- BOTTOM BANNER -->
+
+        <section class="dashboard-banner">
+
+
+            <div>
+
+                <span>
+                    VYBE MEMBER
+                </span>
+
+
+                <h2>
+
+                    Something special
+
+                    <em>
+                        awaits you.
+                    </em>
+
+                </h2>
+
+
+                <p>
+
+                    Explore our latest collection and find something
+
+                    that feels uniquely yours.
+
+                </p>
+
+
+                <a href="#">
+
+                    Start Exploring
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <div class="banner-symbol">
+
+                ✦
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+    ```
 
 </body>
 

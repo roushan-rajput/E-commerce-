@@ -1,4 +1,4 @@
-from django.db.models import Model
+# from django.db.models import Model
 from django.shortcuts import redirect, render
 from .models import User
 
@@ -8,21 +8,43 @@ def landing(req):
 
 def login(req):
     if req.method == 'POST':
-        e = req.POST.get('useremail')
-        p = req.POST.get('userpassword')
-        user=User.objects.filter(useremail=e)       
+        e = req.POST.get('email')
+        p = req.POST.get('password')
+        user = User.objects.filter(
+            useremail=e
+        )
+
         if not user.exists():
             message = 'User does not exist'
-            return render(req, 'register.html', {'error': message})
+            print(user)
+            return render(
+                req,
+                'login.html',
+                {
+                    'error': message
+                }
+            )
         else:
-            user_data=User.objects.get(useremail=e)
-            if p==user_data.userpassword:
-                req.session['user_id'] = user_data.id
+            user_data = User.objects.get(
+                useremail=e
+            )
+            if p == user_data.userpassword:
+                req.session["user_id"] = user_data.id
                 return redirect('dashboard')
             else:
                 message = 'Incorrect password'
-                return render(req, 'login.html', {'error': message})
-    return render(req, 'login.html')
+                return render(
+                    req,
+                    'login.html',
+                    {
+                        'error': message
+                    }
+                )
+    return render(
+        req,
+        'login.html'
+    )
+
 
 def register(req):
     if req.method == 'POST':
@@ -30,7 +52,7 @@ def register(req):
         e = req.POST.get('useremail')
         c = req.POST.get('usercontact')
         g = req.POST.get('usergender')
-        pr = req.POST.get('userprofile')
+        pr = req.FILES.get('userprofile')
         p = req.POST.get('userpassword')
         cp = req.POST.get('userconfirmpassword')
 
@@ -45,4 +67,25 @@ def register(req):
     return render(req, 'register.html')
 
 def dashboard(req):
-    return render(req, 'dashboard.html')    
+
+    user_id = req.session.get("user_id")
+
+    if not user_id:
+
+        return redirect("login")
+
+    user = User.objects.get(
+        id=user_id
+    )
+
+    return render(
+        req,
+        "dashboard.html",
+        {
+            "user": user
+        }
+    )
+
+def logout(req):
+    req.session.flush()
+    return redirect("login")
