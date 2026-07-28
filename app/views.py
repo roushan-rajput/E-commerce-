@@ -106,18 +106,59 @@ def logout(req):
 
 
 def addpro(req):
-    if req.method == 'POST':
-        productname = req.POST.get('productname')
-        productdescription = req.POST.get('productdescription')
-        productprice = req.POST.get('productprice')
-        productimage = req.FILES.get('productimage')
+
+    if not req.session.get("admin"):
+        return redirect("login")
+
+    if req.method == "POST":
+
+        productname = req.POST.get("productname")
+        productdescription = req.POST.get("productdescription")
+        productprice = req.POST.get("productprice")
+        productimage = req.FILES.get("productimage")
 
         new_product = Product(
-            productname=productname,productdescription=productdescription,productprice=productprice,productimage=productimage)
-        new_product.save()
-        return redirect('admindash')
-    return render(req, 'addpro.html')
+            productname=productname,
+            productdescription=productdescription,
+            productprice=productprice,
+            productimage=productimage
+        )
 
+        new_product.save()
+
+        return redirect("allpro")
+
+    return render(
+        req,
+        "addpro.html"
+    )
+
+def editpro(req, product_id):
+
+    if not req.session.get("admin"):
+        return redirect("login")
+
+    product = Product.objects.get(id=product_id)
+    if req.method == "POST":
+
+        product.productname = req.POST.get("productname")
+        product.productdescription = req.POST.get("productdescription")
+        product.productprice = req.POST.get("productprice")
+
+        if req.FILES.get("productimage"):
+            product.productimage = req.FILES.get("productimage")
+
+        product.save()
+
+        return redirect("allpro")
+
+    return render(
+        req,
+        "addpro.html",
+        {
+            "product": product
+        }
+    )
 
 def allpro(req):
     products = Product.objects.all()
@@ -138,30 +179,7 @@ def allpro(req):
         }
     )
 
-# def editpro(req, product_id):
-#     if not req.session.get("admin"):
-#         return redirect("login")
 
-#     product = Product.objects.get(id=product_id)
-
-#     if req.method == 'POST':
-#         product.productname = req.POST.get('productname')
-#         product.productdescription = req.POST.get('productdescription')
-#         product.productprice = req.POST.get('productprice')
-
-#         if req.FILES.get('productimage'):
-#             product.productimage = req.FILES.get('productimage')
-
-#         product.save()
-#         return redirect('allpro')
-
-#     return render(
-#         req,
-#         'editpro.html',
-#         {
-#             'product': product
-#         }
-#     )
 
 def deletepro(req, product_id):
     if not req.session.get("admin"):

@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Add Product | VYBE</title>
+    <title>
+        {% if product %}
+            Update Product | VYBE
+        {% else %}
+            Add Product | VYBE
+        {% endif %}
+    </title>
 
     {% load static %}
 
     <link rel="stylesheet" href="{% static 'css/addpro.css' %}">
+
 </head>
 
 <body>
+
     <div class="product-page">
 
         <div class="product-container">
@@ -25,6 +35,18 @@
                         PRODUCT MANAGEMENT
                     </span>
 
+                    {% if product %}
+
+                    <h1>
+                        Update <em>Product.</em>
+                    </h1>
+
+                    <p>
+                        Update your existing product details.
+                    </p>
+
+                    {% else %}
+
                     <h1>
                         Add New <em>Product.</em>
                     </h1>
@@ -33,10 +55,12 @@
                         Create a new product and add it to your store collection.
                     </p>
 
+                    {% endif %}
+
                 </div>
 
-                <a href="+" class="back-button">
-                    ← Back to Dashboard
+                <a href="{% url 'allpro' %}" class="back-button">
+                    ← Back to Products
                 </a>
 
             </div>
@@ -62,7 +86,7 @@
                             </h2>
 
                             <p>
-                                Enter the basic details of your product.
+                                Enter the details of your product.
                             </p>
 
                         </div>
@@ -70,59 +94,97 @@
                     </div>
 
 
+                    <!-- PRODUCT NAME -->
+
                     <div class="form-group">
 
-                        <label for="productname">
+                        <label>
                             Product Name
                         </label>
 
-                        <input type="text" id="productname" name="productname" placeholder="Enter product name"
+                        <input
+                            type="text"
+                            name="productname"
+                            placeholder="Enter product name"
+                            value="{{ product.productname }}"
                             required>
 
                     </div>
 
 
+                    <!-- PRODUCT DESCRIPTION -->
+
                     <div class="form-group">
 
-                        <label for="productdescription">
+                        <label>
                             Product Description
                         </label>
 
-                        <textarea id="productdescription" name="productdescription"
-                            placeholder="Write a detailed description of your product..." rows="6" required></textarea>
+                        <textarea
+                            name="productdescription"
+                            rows="6"
+                            placeholder="Write product description..."
+                            required>{{ product.productdescription }}</textarea>
 
                     </div>
 
 
+                    <!-- PRODUCT PRICE -->
+
                     <div class="form-group">
 
-                        <label for="productprice">
+                        <label>
                             Product Price
                         </label>
 
                         <div class="price-input">
 
-                            <span>
-                                $
-                            </span>
+                            <span>$</span>
 
-                            <input type="number" id="productprice" name="productprice" placeholder="0.00" step="0.01"
-                                min="0" required>
+                            <input
+                                type="number"
+                                name="productprice"
+                                step="0.01"
+                                min="0"
+                                placeholder="0.00"
+                                value="{{ product.productprice }}"
+                                required>
 
                         </div>
 
                     </div>
 
 
+                    <!-- PRODUCT IMAGE -->
+
                     <div class="form-group">
 
-                        <label for="productimage">
+                        <label>
                             Product Image
                         </label>
 
                         <div class="upload-box">
 
-                            <input type="file" id="productimage" name="productimage" accept="image/*" required>
+                            {% if product.productimage %}
+
+                            <div style="text-align:center;padding-top:20px;">
+
+                                <img
+                                    src="{{ product.productimage.url }}"
+                                    style="width:180px;height:180px;object-fit:cover;border-radius:12px;">
+
+                                <p style="margin-top:10px;color:#888;">
+                                    Current Image
+                                </p>
+
+                            </div>
+
+                            {% endif %}
+
+                            <input
+                                type="file"
+                                name="productimage"
+                                accept="image/*">
 
                             <div class="upload-content">
 
@@ -131,11 +193,21 @@
                                 </div>
 
                                 <h3>
+
+                                    {% if product %}
+
+                                    Change Product Image
+
+                                    {% else %}
+
                                     Upload Product Image
+
+                                    {% endif %}
+
                                 </h3>
 
                                 <p>
-                                    PNG, JPG or WEBP images are supported
+                                    PNG, JPG and WEBP Supported
                                 </p>
 
                             </div>
@@ -149,15 +221,31 @@
 
                 <div class="form-footer">
 
-                    <a href="{% url 'admindash' %}" class="cancel-button">
+                    <a href="{% url 'allpro' %}" class="cancel-button">
+
                         Cancel
+
                     </a>
 
-                    <button type="submit" class="submit-button">
+
+                    <button
+                        type="submit"
+                        class="submit-button">
+
+                        {% if product %}
+
+                        Update Product
+
+                        {% else %}
+
                         Add Product
+
+                        {% endif %}
+
                         <span>
                             →
                         </span>
+
                     </button>
 
                 </div>
@@ -167,7 +255,6 @@
         </div>
 
     </div>
-    
 
 </body>
 
