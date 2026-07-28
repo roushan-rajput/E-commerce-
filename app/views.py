@@ -137,3 +137,36 @@ def allpro(req):
             "is_admin": is_admin
         }
     )
+
+# def editpro(req, product_id):
+#     if not req.session.get("admin"):
+#         return redirect("login")
+
+#     product = Product.objects.get(id=product_id)
+
+#     if req.method == 'POST':
+#         product.productname = req.POST.get('productname')
+#         product.productdescription = req.POST.get('productdescription')
+#         product.productprice = req.POST.get('productprice')
+
+#         if req.FILES.get('productimage'):
+#             product.productimage = req.FILES.get('productimage')
+
+#         product.save()
+#         return redirect('allpro')
+
+#     return render(
+#         req,
+#         'editpro.html',
+#         {
+#             'product': product
+#         }
+#     )
+
+def deletepro(req, product_id):
+    if not req.session.get("admin"):
+        return redirect("login")
+
+    product = Product.objects.get(id=product_id)
+    product.delete()
+    return redirect('allpro')

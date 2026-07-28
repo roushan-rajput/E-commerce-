@@ -31,6 +31,8 @@ urlpatterns = [
 
     path('addpro/', views.addpro, name='addpro'),                 #product 
     path('allpro/', views.allpro, name='allpro'),                 #product 
+    # path('editpro/<int:product_id>/', views.editpro, name='editpro'), #product
+    path('deletepro/<int:product_id>/', views.deletepro, name='deletepro'), #product
 
 ]
 if settings.DEBUG:

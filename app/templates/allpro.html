@@ -102,11 +102,11 @@
                             <div class="product-actions">
                                 {% if is_admin %}
 
-                                <a href="#" class="edit-button">
+                                {% comment %} <a href="{% url 'editpro' product.id %}" class="edit-button"> {% endcomment %}
                                     EDIT
                                 </a>
 
-                                <a href="#" class="delete-button">
+                                <a href="{% url 'deletepro' product.id %}" class="delete-button">
                                     DEL
                                 </a>
 
