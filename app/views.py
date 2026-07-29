@@ -1,4 +1,5 @@
-# from django.db.models import Model
+import random
+from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from .models import User,Product
 
@@ -104,6 +105,29 @@ def logout(req):
     req.session.flush()
     return redirect("login")
 
+# def forgetpass(req):
+#     return render(req, 'forgetpass.html')
+
+def forgetpass(req):
+    if req.method == 'POST':
+        e = req.POST.get('Email')
+        # print('email:', e)
+        req.session['email']=e
+
+        otp = random.randint(1111, 9999)
+        req.session['classotp'] =otp
+        send_mail(
+            'OTP Verification for Forget password',
+            f'Generate OTP for django app is {otp}',
+            'roushanrajput12362@gmail.com',
+            [e]
+        )
+        # print('otp send successfully!!!')
+        return render(req, 'verifyotp.html')
+    return render(req, 'forgetpass.html')
+
+def verifyotp(req):
+    return render(req,'verifyotp.html')
 
 def addpro(req):
 
@@ -160,6 +184,7 @@ def editpro(req, product_id):
         }
     )
 
+
 def allpro(req):
     products = Product.objects.all()
 
@@ -169,7 +194,6 @@ def allpro(req):
 
     if not is_admin and not user_id:
         return redirect("login")
-
     return render(
         req,
         "allpro.html",
@@ -179,8 +203,6 @@ def allpro(req):
         }
     )
 
-
-
 def deletepro(req, product_id):
     if not req.session.get("admin"):
         return redirect("login")
@@ -188,3 +210,4 @@ def deletepro(req, product_id):
     product = Product.objects.get(id=product_id)
     product.delete()
     return redirect('allpro')
+

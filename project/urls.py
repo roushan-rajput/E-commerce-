@@ -28,12 +28,15 @@ urlpatterns = [
     path('admindash/', views.admindash, name='admindash'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('logout/', views.logout, name='logout'),
-
-    path('addpro/', views.addpro, name='addpro'),                 #product 
-    path('allpro/', views.allpro, name='allpro'),                 #product 
-    path("editpro/<int:product_id>/", views.editpro, name="editpro"),  #product  
-    path('deletepro/<int:product_id>/', views.deletepro, name='deletepro'), #product
-
+    path('forgetpass/', views.forgetpass, name='forgetpass'),
+    path('send_otp/', views.forgetpass, name='send_otp'),
+    path('verifyotp/', views.verifyotp, name='verifyotp'),
+#product urls
+    path('addpro/', views.addpro, name='addpro'),                 
+    path('allpro/', views.allpro, name='allpro'),                  
+    path("editpro/<int:product_id>/", views.editpro, name="editpro"),    
+    path('deletepro/<int:product_id>/', views.deletepro, name='deletepro'),
+    
 ]
 if settings.DEBUG:
 
