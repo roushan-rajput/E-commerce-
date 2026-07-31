@@ -4,10 +4,10 @@ from django.shortcuts import redirect, render
 from .models import User,Product
 
 # Create your views here.
-def landing(req):
+def landing(req):                                           #For Landing
     return render(req, 'landing.html')
 
-def login(req):
+def login(req):                                             #For Login
     if req.method == 'POST':
         e = req.POST.get('email')
         p = req.POST.get('password')
@@ -54,8 +54,7 @@ def login(req):
         'login.html'
     )
 
-
-def register(req):
+def register(req):                                          #For Register
     if req.method == 'POST':
         n = req.POST.get('username')
         e = req.POST.get('useremail')
@@ -75,16 +74,14 @@ def register(req):
             return redirect('login')
     return render(req, 'register.html')
 
-def admindash(req):
+def admindash(req):                                            #For adminDashboard
     if not req.session.get("admin"):
         return redirect("login")
     return render(req, "admindash.html")
 
 
-def dashboard(req):
-
+def dashboard(req):                                            #For Dashboard Switching
     user_id = req.session.get("user_id")
-
     if not user_id:
 
         return redirect("login")
@@ -101,11 +98,11 @@ def dashboard(req):
         }
     )
 
-def logout(req):
+def logout(req):                                        #FOr Logout Logics 
     req.session.flush()
     return redirect("login")
 
-def forgetpass(req):
+def forgetpass(req):                                    #For Forget password method 
     if req.method == 'POST':
         e = req.POST.get('Email')
         # print('email:', e)
@@ -123,11 +120,10 @@ def forgetpass(req):
         return render(req, 'verifyotp.html')
     return render(req, 'forgetpass.html')
 
-def verifyotp(req):
+def verifyotp(req):                                    #For Verifying OTP method 
     return render(req,'verifyotp.html')
 
-def addpro(req):
-
+def addpro(req):                                        #For Adding Product Logics 
     if not req.session.get("admin"):
         return redirect("login")
 
@@ -153,7 +149,7 @@ def addpro(req):
         "addpro.html"
     )
 
-def editpro(req, product_id):
+def editpro(req, product_id):                              #For Editing product details logics 
 
     if not req.session.get("admin"):
         return redirect("login")
@@ -181,7 +177,7 @@ def editpro(req, product_id):
     )
 
 
-def allpro(req):
+def allpro(req):                                        #For showing all products logics 
     products = Product.objects.all()
 
     is_admin = req.session.get("admin", False)
@@ -199,10 +195,9 @@ def allpro(req):
         }
     )
 
-def deletepro(req, product_id):
+def deletepro(req, product_id):                        #For  Delecting product logics
     if not req.session.get("admin"):
         return redirect("login")
     product = Product.objects.get(id=product_id)
     product.delete()
     return redirect('allpro')
-
