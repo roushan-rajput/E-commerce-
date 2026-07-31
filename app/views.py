@@ -105,9 +105,6 @@ def logout(req):
     req.session.flush()
     return redirect("login")
 
-# def forgetpass(req):
-#     return render(req, 'forgetpass.html')
-
 def forgetpass(req):
     if req.method == 'POST':
         e = req.POST.get('Email')
@@ -135,7 +132,6 @@ def addpro(req):
         return redirect("login")
 
     if req.method == "POST":
-
         productname = req.POST.get("productname")
         productdescription = req.POST.get("productdescription")
         productprice = req.POST.get("productprice")
@@ -206,7 +202,6 @@ def allpro(req):
 def deletepro(req, product_id):
     if not req.session.get("admin"):
         return redirect("login")
-
     product = Product.objects.get(id=product_id)
     product.delete()
     return redirect('allpro')
