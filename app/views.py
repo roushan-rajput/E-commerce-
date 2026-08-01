@@ -50,9 +50,9 @@ def login(req):                                             #For Login
                 )
     return render(
         req,
-
         'login.html'
     )
+
 
 def register(req):                                          #For Register
     if req.method == 'POST':
@@ -120,8 +120,51 @@ def forgetpass(req):                                    #For Forget password met
         return render(req, 'verifyotp.html')
     return render(req, 'forgetpass.html')
 
+
 def verifyotp(req):                                    #For Verifying OTP method 
-    return render(req,'verifyotp.html')
+    if req.method == "POST":
+        user_otp = int(req.POST.get("otp"))
+        sent_otp = int(req.session.get("classotp"))
+        print("User OTP:", repr(user_otp), type(user_otp))
+        print("Sent OTP:", repr(sent_otp), type(sent_otp))
+        print("Equal:", user_otp == sent_otp)
+        if sent_otp is None:
+            return render(req, "verifyotp.html", {
+                "error": "OTP expired. Please request a new OTP."
+            })
+        if user_otp == sent_otp:
+            # return redirect("passwordreset")
+            print("OTP verified successfully!")
+        else:
+            # return render(req, "verifyotp.html", {
+                # "error": "Invalid OTP"
+            # })
+            print("Invalid OTP")
+    # return render(req, "verifyotp.html")              
+
+
+# def passwordreset(req):
+#     email = req.session.get("reset_email")
+#     if email is None:
+#         return redirect("forgetpass")
+#     if req.method == "POST":
+#         new_password = req.POST.get("new_password")
+#         confirm_password = req.POST.get("confirm_password")
+#         if new_password == confirm_password:
+#             user = User.objects.get(useremail=email)
+#             user.userpassword = new_password
+#             user.userconfirmpassword = confirm_password
+#             user.save()
+#             # Session clear kar do
+#             req.session.pop("otp", None)
+#             req.session.pop("reset_email", None)
+#             return redirect("login")
+#         else:
+#             return render(req, "password_reset.html", {
+#                 "error": "Passwords do not match"
+#             })
+#     return render(req, "password_reset.html")
+
 
 def addpro(req):                                        #For Adding Product Logics 
     if not req.session.get("admin"):
@@ -149,25 +192,21 @@ def addpro(req):                                        #For Adding Product Logi
         "addpro.html"
     )
 
-def editpro(req, product_id):                              #For Editing product details logics 
 
+def editpro(req, product_id):                              #For Editing product details logics 
     if not req.session.get("admin"):
         return redirect("login")
-
     product = Product.objects.get(id=product_id)
     if req.method == "POST":
-
         product.productname = req.POST.get("productname")
         product.productdescription = req.POST.get("productdescription")
         product.productprice = req.POST.get("productprice")
 
         if req.FILES.get("productimage"):
             product.productimage = req.FILES.get("productimage")
-
         product.save()
-
         return redirect("allpro")
-
+    
     return render(
         req,
         "addpro.html",
@@ -177,7 +216,7 @@ def editpro(req, product_id):                              #For Editing product 
     )
 
 
-def allpro(req):                                        #For showing all products logics 
+def allpro(req):                                           #For showing all products logics 
     products = Product.objects.all()
 
     is_admin = req.session.get("admin", False)

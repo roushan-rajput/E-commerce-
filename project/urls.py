@@ -31,13 +31,17 @@ urlpatterns = [
     path('forgetpass/', views.forgetpass, name='forgetpass'),
     path('send_otp/', views.forgetpass, name='send_otp'),
     path('verifyotp/', views.verifyotp, name='verifyotp'),
+    # path('passwordreset/', views.passwordreset, name='passwordreset'),
+
+
 #product urls
     path('addpro/', views.addpro, name='addpro'),                 
     path('allpro/', views.allpro, name='allpro'),                  
     path("editpro/<int:product_id>/", views.editpro, name="editpro"),    
-    path('deletepro/<int:product_id>/', views.deletepro, name='deletepro'),
-    
+    path('deletepro/<int:product_id>/', views.deletepro, name='deletepro'),   
 ]
+
+
 if settings.DEBUG:
 
     urlpatterns += django.conf.urls.static.static(
