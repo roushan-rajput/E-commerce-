@@ -133,8 +133,9 @@ def verifyotp(req):                                    #For Verifying OTP method
                 "error": "OTP expired. Please request a new OTP."
             })
         if user_otp == sent_otp:
-            # return redirect("passwordreset")
             print("OTP verified successfully!")
+            return redirect("passwordreset")
+            
         else:
             # return render(req, "verifyotp.html", {
                 # "error": "Invalid OTP"
