@@ -70,6 +70,12 @@ def register(req):                                          #For Register
             return render(req, 'register.html', {'error': message})
         else:
             new_user=User(username=n,useremail=e,usercontact=c,usergender=g,userprofile=pr,userpassword=p,userconfirmpassword=cp)
+            send_mail(
+                        'Account Created Successfully',
+                        f'Hello {n}, your account has been created successfully!',
+                        'roushanrajput12362@gmail.com',
+                        [e]
+                    )
             new_user.save()
             return redirect('login')
     return render(req, 'register.html')
