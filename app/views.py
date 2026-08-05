@@ -189,9 +189,15 @@ def addpro(req):                                        #For Adding Product Logi
             productprice=productprice,
             productimage=productimage
         )
+        send_mail(
+            'Product Added Successfully',
+            f'Hello Admin, the product "{productname}" has been added successfully!',
+            'roushanrajput12362@gmail.com',
+            ['admin@gmail.com']
+        )
 
         new_product.save()
-
+        
         return redirect("allpro")
 
     return render(
