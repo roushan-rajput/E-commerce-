@@ -127,6 +127,9 @@ def forgetpass(req):                                    #For Forget password met
     return render(req, 'forgetpass.html')
 
 
+def passwordreset(req):                                    #For Resetting password method
+    return render(req, 'passwordreset.html')
+
 def verifyotp(req):                                    #For Verifying OTP method 
     if req.method == "POST":
         user_otp = int(req.POST.get("otp"))
@@ -140,37 +143,32 @@ def verifyotp(req):                                    #For Verifying OTP method
             })
         if user_otp == sent_otp:
             print("OTP verified successfully!")
-            return redirect("passwordreset")
-            
+            return redirect('passwordreset')
         else:
-            # return render(req, "verifyotp.html", {
-                # "error": "Invalid OTP"
-            # })
             print("Invalid OTP")
-    # return render(req, "verifyotp.html")              
+            
 
-
-# def passwordreset(req):
-#     email = req.session.get("reset_email")
-#     if email is None:
-#         return redirect("forgetpass")
-#     if req.method == "POST":
-#         new_password = req.POST.get("new_password")
-#         confirm_password = req.POST.get("confirm_password")
-#         if new_password == confirm_password:
-#             user = User.objects.get(useremail=email)
-#             user.userpassword = new_password
-#             user.userconfirmpassword = confirm_password
-#             user.save()
-#             # Session clear kar do
-#             req.session.pop("otp", None)
-#             req.session.pop("reset_email", None)
-#             return redirect("login")
-#         else:
-#             return render(req, "password_reset.html", {
-#                 "error": "Passwords do not match"
-#             })
-#     return render(req, "password_reset.html")
+def passwordreset(req):
+    email = req.session.get("reset_email")
+    if email is None:
+        return redirect("forgetpass")
+    if req.method == "POST":
+        new_password = req.POST.get("new_password")
+        confirm_password = req.POST.get("confirm_password")
+        if new_password == confirm_password:
+            user = User.objects.get(useremail=email)
+            user.userpassword = new_password
+            user.userconfirmpassword = confirm_password
+            user.save()
+            # Session clear kar do
+            req.session.pop("otp", None)
+            req.session.pop("reset_email", None)
+            return redirect("login")
+        else:
+            return render(req, "password_reset.html", {
+                "error": "Passwords do not match"
+            })
+    return render(req, "passwordreset.html")
 
 
 def addpro(req):                                        #For Adding Product Logics 
@@ -206,6 +204,7 @@ def addpro(req):                                        #For Adding Product Logi
     )
 
 
+
 def editpro(req, product_id):                              #For Editing product details logics 
     if not req.session.get("admin"):
         return redirect("login")
@@ -229,6 +228,7 @@ def editpro(req, product_id):                              #For Editing product 
     )
 
 
+
 def allpro(req):                                           #For showing all products logics 
     products = Product.objects.all()
 
@@ -246,6 +246,8 @@ def allpro(req):                                           #For showing all prod
             "is_admin": is_admin
         }
     )
+
+
 
 def deletepro(req, product_id):                        #For  Delecting product logics
     if not req.session.get("admin"):

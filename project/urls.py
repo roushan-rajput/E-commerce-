@@ -20,6 +20,7 @@ from app import views
 import project.settings as settings
 import django.conf.urls.static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.landing, name='landing'),
@@ -31,7 +32,8 @@ urlpatterns = [
     path('forgetpass/', views.forgetpass, name='forgetpass'),
     path('send_otp/', views.forgetpass, name='send_otp'),
     path('verifyotp/', views.verifyotp, name='verifyotp'),
-    # path('passwordreset/', views.passwordreset, name='passwordreset'),
+    path('passwordreset/', views.passwordreset, name='passwordreset'),
+
 
 
 #product urls
