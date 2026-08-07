@@ -112,10 +112,10 @@ def forgetpass(req):                                    #For Forget password met
     if req.method == 'POST':
         e = req.POST.get('Email')
         # print('email:', e)
-        req.session['email']=e
+        req.session['reset_email'] = e
 
         otp = random.randint(1111, 9999)
-        req.session['classotp'] =otp
+        req.session['sendotp'] =otp
         send_mail(
             'OTP Verification for Forget password',
             f'Generate OTP for django app is {otp}',
@@ -127,13 +127,10 @@ def forgetpass(req):                                    #For Forget password met
     return render(req, 'forgetpass.html')
 
 
-def passwordreset(req):                                    #For Resetting password method
-    return render(req, 'passwordreset.html')
-
 def verifyotp(req):                                    #For Verifying OTP method 
     if req.method == "POST":
         user_otp = int(req.POST.get("otp"))
-        sent_otp = int(req.session.get("classotp"))
+        sent_otp = req.session.get("sendotp")
         print("User OTP:", repr(user_otp), type(user_otp))
         print("Sent OTP:", repr(sent_otp), type(sent_otp))
         print("Equal:", user_otp == sent_otp)
@@ -143,31 +140,59 @@ def verifyotp(req):                                    #For Verifying OTP method
             })
         if user_otp == sent_otp:
             print("OTP verified successfully!")
-            return redirect('passwordreset')
+            return redirect("passwordreset")
+            # return redirect(req,"passwordreset.html")
         else:
             print("Invalid OTP")
-            
+            return render(req, "verifyotp.html", {
+                "error": "Invalid OTP. Please try again."
+            })
+    return render(req, "verifyotp.html")
+
 
 def passwordreset(req):
+    print(req.session)
+    # User email session me honi chahiye
     email = req.session.get("reset_email")
+    
     if email is None:
-        return redirect("forgetpass")
+        return redirect("forgotpassword")   # Apne forgot password URL ka name likho
+
     if req.method == "POST":
+
         new_password = req.POST.get("new_password")
         confirm_password = req.POST.get("confirm_password")
-        if new_password == confirm_password:
-            user = User.objects.get(useremail=email)
-            user.userpassword = new_password
-            user.userconfirmpassword = confirm_password
-            user.save()
-            # Session clear kar do
-            req.session.pop("otp", None)
-            req.session.pop("reset_email", None)
-            return redirect("login")
-        else:
-            return render(req, "password_reset.html", {
-                "error": "Passwords do not match"
+
+        # Empty field check
+        if not new_password or not confirm_password:
+            return render(req, "passwordreset.html", {
+                "error": "All fields are required."
             })
+
+        # Password match check
+        if new_password != confirm_password:
+            return render(req, "passwordreset.html", {
+                "error": "Passwords do not match."
+            })
+
+        # User find karo
+        try:
+            user = User.objects.get(useremail=email)
+        except User.DoesNotExist:
+            return render(req, "passwordreset.html", {
+                "error": "User not found."
+            })
+
+        # Password update
+        user.userpassword = new_password
+        user.userconfirmpassword = confirm_password
+        user.save()
+
+        # Session clear
+        req.session.pop("sendotp", None)
+        req.session.pop("reset_email", None)
+
+        return redirect("login")
     return render(req, "passwordreset.html")
 
 
